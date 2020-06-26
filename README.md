@@ -1,1 +1,1 @@
-# MP_JavaScript
+# mp-javascript
