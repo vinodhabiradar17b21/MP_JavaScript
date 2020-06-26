@@ -1,0 +1,32 @@
+
+			<div class="tab_content">
+			
+			<div class="row">
+
+			<div class="col-xs-12">
+			<div class="title-sub"><h2>Credit Term</h2></div>
+			</div>
+
+			<div class="col-xs-4">
+	
+			<div class="row-vcc">
+						
+			<div class="col-xs-vcc-6">
+			<!-- Text Field (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.creditterm"/></div> 
+			<div class="checkbox" >
+				<input type="checkbox"  class="js-switch form-control input-xs space-input" id="ck_accnCreditTerm"/>
+				<label id="lbl_accnCreditTerm">No</label>
+				<form:input type="hidden" path="tAccnCredit.tmacEnableCredit" id="accnCreditTerm" />
+			</div>
+			<!-- End Text Field -->
+			</div>
+			</div>
+									
+			</div>
+
+			</div>
+			<!-- End row -->
+			</div>
+
+

@@ -1,0 +1,400 @@
+
+			<div class="tab_content">
+			
+			<div class="row">
+
+			<div class="col-xs-12">
+			<div class="title-sub"><h2>Profile</h2></div>
+			</div>
+
+			<div class="col-xs-4">
+	
+			<div class="row-vcc">
+			<div class="col-xs-vcc-6">
+			<!-- Text Field (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.coInitial"/></div> 
+			<c:choose>
+			<c:when test="${register}">
+			<form:input type="text" class="form-control input-xs space-input required" placeholder="Company Short Name(Up to 8 character)" path="tCoreAccn.accnId" id="accnId" onblur="toUpper(this);" onfocusout="checkAccnCd(this)"  maxlength="8" minlength="3" data-parsley-type="alphanum" />
+			<p id="accnid_msg"></p>
+			</c:when>
+			<c:otherwise>
+			<form:input type="text" disabled="true" class="form-control input-xs space-input required" required="true" path="tCoreAccn.accnId" id="accnId" onblur="toUpper(this);" maxlength="8"/>
+			<form:input type="hidden" path="tCoreAccn.accnId" value="${accountBean.tCoreAccn.accnId}"/>
+			</c:otherwise>
+			</c:choose>
+			<!-- End Text Field (required)-->
+			</div>
+			
+			<div class="col-xs-vcc-6">
+			<!-- Text Field (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.status"/></div> 
+			<div class="checkbox" >
+				<input type="checkbox"  class="js-switch form-control input-xs space-input" id="ck_accnSt"/>
+				<label id="lbl_accnSt">Inactive</label>
+				<form:input type="hidden" path="tCoreAccn.accnStatus" id="accnSt" />
+			</div>
+			<!-- End Text Field -->
+			</div>
+			</div>
+
+			<!-- Select (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.type"/></div> 
+			<c:choose>
+			<c:when test="${register}">
+			<form:select name="slct_accnType" path="tCoreAccn.TMstAccnType.atypId" id="slct_accnType" class="form-control input-xs space-input required" onchange="acctTypeOnChange()" >
+				<form:option value="CUS">CUSTOMER</form:option>
+				<form:option value="SP">SERVICE PROVIDER</form:option>
+			</form:select>
+			</c:when>
+			<c:otherwise>
+				<form:input type="text" disabled="true" class="form-control input-xs space-input" path="tCoreAccn.TMstAccnType.atypDescription"/>
+				<form:input type="hidden" path="tCoreAccn.TMstAccnType.atypId" id="slct_accnType"  value="${accountBean.tCoreAccn.TMstAccnType.atypId}"/>
+			</c:otherwise>
+			</c:choose>
+			<!-- End Select (required) -->
+			
+			<!-- Text Field (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.compName"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Company Name"  onblur="toUpper(this);" required="true" path="tCoreAccn.accnName" maxlength="100" />
+			<!-- End Text Field (required)-->
+
+			<!-- Text Field -->
+			 <spring:message code="marketplace.placeholder.acc.compRegNo" var="coyReg"/>
+			<div class="label-input"><spring:message code="marketplace.label.acc.compRegNo"/></div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="${coyReg}"   onblur="toUpper(this);" path="tCoreAccn.accnCoyRegn" maxlength="50"/>
+			<!-- End Text Field -->
+			
+			<!-- Text Field -->
+			<div class="asperindoDiv" >
+			<div class="label-input"><spring:message code="marketplace.label.acc.AspiRegNo"/></div> 
+			<form:input type="text" id ="asperindoRNo" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Asperindo Register No"  onblur="toUpper(this);" path="tCoreAccn.accnPassNid" maxlength="50"/>
+			</div><!-- End Text Field -->
+			
+			
+			<!-- Image Field -->
+			<div class="compImageDiv" >
+			<div class="label-input"><spring:message code="marketplace.label.acc.compLogo"/></div> 
+				<c:choose>
+				<c:when test="${not empty accountBean.tMpAccnLogo.tmalLogoFilename }">
+               		<a target="_blank" href="/COMarketPlace/accnLogoDoc/download?fileId=${accountBean.tMpAccnLogo.tmalLogoId}&fileExt=${accountBean.tMpAccnLogo.tmalLogoDocType}&fileName=${accountBean.tMpAccnLogo.tmalLogoFilename}">
+               		${accountBean.tMpAccnLogo.tmalLogoFilename }
+               		</a>
+               	</c:when>
+               	<c:otherwise>
+               		<form:input type="file" path="logoFile" class="form-control input-xs space-input required" id ="logo"/>
+               	</c:otherwise>
+               	</c:choose>
+			</div>
+			<!-- End Image Field -->
+			
+			</div>
+
+			<div class="col-xs-4">
+
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.compAddr1"/></div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Address Line 1"  onblur="toUpper(this);" path="tCoreAccn.accnAddr.addrLn1" maxlength="64" />
+			<!-- End Text Field -->
+
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.compAddr2"/></div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Address Line 2"  onblur="toUpper(this);" path="tCoreAccn.accnAddr.addrLn2" maxlength="64" />
+			<!-- End Text Field -->
+
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.compAddr3"/> </div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Address Line 3 "  onblur="toUpper(this);" path="tCoreAccn.accnAddr.addrLn3" maxlength="64" />
+			<!-- End Text Field -->
+
+			<div class="row-vcc">
+			<div class="col-xs-vcc-6">
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.city"/></div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="City"  onblur="toUpper(this);" path="tCoreAccn.accnAddr.addrCity" maxlength="15" />
+			<!-- End Text Field -->
+			</div>
+
+			<div class="col-xs-vcc-6">
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.postCode"/> </div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Postal Code" path="tCoreAccn.accnAddr.addrPcode" maxlength="6" data-parsley-type="number" />
+			<!-- End Text Field -->
+			</div>
+
+			</div>
+
+			<div class="row-vcc">
+
+			<div class="col-xs-vcc-6">
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.prov"/> </div> 
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Province"  onblur="toUpper(this);" path="tCoreAccn.accnAddr.addrProv" maxlength="15" />
+			<!-- End Text Field -->
+			</div>
+
+			<div class="col-xs-vcc-6">
+			<!-- Select (required) --> 
+			<div class="label-input"><spring:message code="marketplace.label.acc.country"/></div>
+			<form:select name="slct_accnCtycode" disabled="${disabled}" path="tCoreAccn.accnAddr.addrCtry.ctyCode" id="slct_accnCtycode" class="form-control input-xs space-input required" onchange="countryOnChange()">
+				<c:choose>
+					<c:when test="${empty countries }">
+						<form:option value=""><spring:message code="marketplace.label.acc.option.noctry"/></form:option>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${countries }" var="cty">
+							<form:option value="${cty.getCtyCode() }">${cty.getCtyDescription() }</form:option>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</form:select>
+			<!-- End Select (required) -->
+			</div>
+
+			</div>
+
+			</div>
+
+			<div class="col-xs-4">
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.tel"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Telephone" path="tCoreAccn.accnContact.contactTel" maxlength="15" data-parsley-type="number"/>
+			<!-- End Text Field -->
+
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.fax"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Fax" path="tCoreAccn.accnContact.contactFax" maxlength="15" data-parsley-type="number"/>
+			<!-- End Text Field -->
+
+			<!-- Text Field -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.email"/> </div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Email" path="tCoreAccn.accnContact.contactEmail" maxlength="128" data-parsley-type="email"/>
+			<!-- End Text Field -->
+			</div>
+
+			</div>
+			<!-- End row -->
+			<div class="row">
+
+			<div class="col-xs-12">
+			<div class="title-sub"><h2><spring:message code="marketplace.label.acc.applicant.detail"/></h2></div>
+			</div>
+
+			<div class="col-xs-4">
+			<!-- Text Field (required) -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.applicant.name"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Name"  onblur="toUpper(this);" path="tCoreAccnContacts[0].aconName" id="applicantName" maxlength="100"/>
+			<!-- End Text Field (required)-->
+
+			<!-- Text Field (required) -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.applicant.title"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Title"  onblur="toUpper(this);" path="tCoreAccnContacts[0].aconTitle" id="applicantDesignation" maxlength="30" />
+			<!-- End Text Field (required)-->
+
+			</div>
+
+			<div class="col-xs-4">
+			<!-- Text Field (required) -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.applicant.email"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Email" path="tCoreAccnContacts[0].aconEmail" id="applicantEmail" maxlength="50" data-parsley-type="email" />
+			<!-- End Text Field (required)-->
+			
+			<!-- Text Field (required) -->
+			<div class="label-input"><spring:message code="marketplace.label.acc.applicant.contactNo"/></div>
+			<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Contact Number"
+			 path="tCoreAccnContacts[0].aconTel" id="applicantTel" maxlength="15" data-parsley-type="number" />
+			
+			<!-- End Text Field (required)-->
+			</div>
+
+			</div>
+			
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="title-sub">
+						<h2><spring:message code="marketplace.label.acc.svcprvd"/></h2>
+					</div>
+				</div>
+			</div>
+	
+				<!-- Row 1 -->
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- End Checkbox Vertical -->
+						<div class="space-input">
+						
+						
+						
+						
+						
+						<c:choose>
+                   <c:when test="${principal.accnRole=='ADMIN'}">
+                     <c:forEach items="${accountBean.tCoreAccnModuleBeans }" var="accnModule" varStatus="moduleloop">
+										<div class="checkbox">
+											<label>
+												<div class="row-vcc">
+													<div class="col-xs-vcc-12">
+														<form:checkbox value="${accnModule.isTick}" path="tCoreAccnModuleBeans[${moduleloop.index }].isTick" onchange="subServiceSetup()" id="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+														&nbsp;&nbsp;${accnModule.tCoreAccnModule.id.TMmstModule.mmstModuleDesc}
+														<form:input type="hidden" path="tCoreAccnModuleBeans[${moduleloop.index}].tCoreAccnModule.id.TMmstModule.mmstModuleCode" value="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+													
+													</div>
+												</div>
+											</label>
+										</div>
+										
+									<c:if test="${'FREIGHT' eq accnModule.tCoreAccnModule.id.TMmstModule.mmstModuleCode}">
+										<div id="freightSubService">
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isAir}" path="tCoreAccnModuleBeans[${moduleloop.index }].isAir"/>&nbsp;&nbsp;Air
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isSea}" path="tCoreAccnModuleBeans[${moduleloop.index }].isSea"/>&nbsp;&nbsp;Sea
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isRoad}" path="tCoreAccnModuleBeans[${moduleloop.index }].isRoad"/>&nbsp;&nbsp;Road
+														</div>
+												</label>
+											</div>
+										</div>
+									</c:if>
+
+
+
+							</c:forEach>
+   					 </c:when>
+    					<c:otherwise>
+        					<c:forEach items="${accountBean.tCoreAccnModuleBeans }" var="accnModule" varStatus="moduleloop">
+										<div class="checkbox">
+											<label>
+												<div class="row-vcc">
+													<div class="col-xs-vcc-12">
+														<form:checkbox value="${accnModule.isTick}" path="tCoreAccnModuleBeans[${moduleloop.index }].isTick" onchange="subServiceSetup()" id="${accountBean.tCoreAccnModuleBeans[moduleloop.index].coreAccnModuleEntitle.id.TMmstModule.mmstModuleCode}"/>
+														&nbsp;&nbsp;${accnModule.coreAccnModuleEntitle.id.TMmstModule.mmstModuleDesc}
+														<form:input type="hidden" path="tCoreAccnModuleBeans[${moduleloop.index}].coreAccnModuleEntitle.id.TMmstModule.mmstModuleCode" value="${accountBean.tCoreAccnModuleBeans[moduleloop.index].coreAccnModuleEntitle.id.TMmstModule.mmstModuleCode}"/>
+													</div>
+												</div>
+											</label>
+										</div>
+										
+									<c:if test="${'FREIGHT' eq accnModule.coreAccnModuleEntitle.id.TMmstModule.mmstModuleCode}">
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isAir}" path="tCoreAccnModuleBeans[${moduleloop.index }].isAir"/>&nbsp;&nbsp;Air
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isSea}" path="tCoreAccnModuleBeans[${moduleloop.index }].isSea"/>&nbsp;&nbsp;Sea
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isRoad}" path="tCoreAccnModuleBeans[${moduleloop.index }].isRoad"/>&nbsp;&nbsp;Road
+														</div>
+												</label>
+											</div>
+									</c:if>
+									
+
+
+
+							</c:forEach>
+    </c:otherwise>
+</c:choose> 
+
+	</div>					
+						<%-- <% ${principal.accnRole=='ADMIN'} %> --%>
+
+						
+							<%-- <c:forEach items="${accountBean.tCoreAccnModuleBeans }" var="accnModule" varStatus="moduleloop">
+							
+							<c:choose>
+								<c:when test="${accnModule.isTick && accnModule.tCoreAccnModule.amodStatus == 'False'}">
+										<div class="checkbox">
+											<label>
+												<div class="row-vcc">
+													<div class="col-xs-vcc-12">
+														<form:checkbox value="${accnModule.isTick}" path="tCoreAccnModuleBeans[${moduleloop.index }].isTick" onchange="subServiceSetup()" id="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+														&nbsp;&nbsp;${accnModule.tCoreAccnModule.id.TMmstModule.mmstModuleDesc}
+														<form:input type="hidden" path="tCoreAccnModuleBeans[${moduleloop.index}].tCoreAccnModule.id.TMmstModule.mmstModuleCode" value="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+													
+													</div>
+												</div>
+											</label>
+										</div>
+									</c:when>
+									<c:when test="${principal.accnRole=='ADMIN'}">
+										<div class="checkbox">
+											<label>
+												<div class="row-vcc">
+													<div class="col-xs-vcc-12">
+														<form:checkbox value="${accnModule.isTick}" path="tCoreAccnModuleBeans[${moduleloop.index }].isTick" onchange="subServiceSetup()" id="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+														&nbsp;&nbsp;${accnModule.tCoreAccnModule.id.TMmstModule.mmstModuleDesc}
+														<form:input type="hidden" path="tCoreAccnModuleBeans[${moduleloop.index}].tCoreAccnModule.id.TMmstModule.mmstModuleCode" value="${accountBean.tCoreAccnModuleBeans[moduleloop.index].tCoreAccnModule.id.TMmstModule.mmstModuleCode}"/>
+													
+													</div>
+												</div>
+											</label>
+										</div>
+									</c:when>
+									<c:otherwise>
+        								
+						    		</c:otherwise>
+								</c:choose>
+										
+									<c:if test="${'FREIGHT' eq accnModule.tCoreAccnModule.id.TMmstModule.mmstModuleCode}">
+										<div id="freightSubService">
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isAir}" path="tCoreAccnModuleBeans[${moduleloop.index }].isAir"/>&nbsp;&nbsp;Air
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isSea}" path="tCoreAccnModuleBeans[${moduleloop.index }].isSea"/>&nbsp;&nbsp;Sea
+														</div>
+												</label>
+											</div>
+											<div class="checkbox">
+												<label>
+														<div class="col-xs-vcc-12">
+															&nbsp;&nbsp;<form:checkbox value="${accnModule.isRoad}" path="tCoreAccnModuleBeans[${moduleloop.index }].isRoad"/>&nbsp;&nbsp;Road
+														</div>
+												</label>
+											</div>
+										</div>
+									</c:if>
+
+
+
+							</c:forEach>
+						<!-- End Checkbox Vertical -->
+					</div> --%>
+				</div>
+				<!-- End Row 1 -->
+			</div>
+			
+			
+			</div>
+
+

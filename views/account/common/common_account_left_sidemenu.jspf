@@ -1,0 +1,81 @@
+<div class="col-xs-2">
+
+<%-- 
+	<div class="title-sub">
+		<h2>Account Status</h2>
+	</div>
+	<div class="col-report">
+		<ul class="fordtreeview list-group">
+			<li class=""><span class="hasSub" style="display: none;"></span>
+				<ul class="list-group expanded">
+					<li class="list-group-item"><a
+						href="javascript:setStatus('');"><i class="fa fa-table"></i>
+							All</a></li>
+					<li class="list-group-item"><a
+						href="javascript:setStatus('N');"><i class="fa fa-table"></i>
+							Pending Approval</a></li>
+					<li class="list-group-item"><a
+						href="javascript:setStatus('A');"><i class="fa fa-table"></i>
+							Active</a></li>
+					<li class="list-group-item"><a
+						href="javascript:setStatus('I');"><i class="fa fa-table"></i>
+							Inactive</a></li>
+					<li class="list-group-item"><a
+						href="javascript:setStatus('R');"><i class="fa fa-table"></i>
+							Rejected</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+	
+	
+	
+	
+	<div>
+	--%>
+	<div class="title-sub">
+		<h2><spring:message code="marketplace.label.acc.accnStatus"/> </h2>
+	</div>
+	<div class="col-report">
+		<ul class="fordtreeview list-group">
+			<li class=""><span class="hasSub" style="display: none;"></span>
+				<ul class="list-group expanded ul-accountStatus">
+
+						<li class="list-group-item" value="">
+							<a>
+							<i class="fa fa-table"></i>
+								All
+							</a>
+						</li>
+						<li class="list-group-item" value="N">
+							<a>
+							<i class="fa fa-table"></i>
+								Pending Approval
+							</a>
+						</li>
+						<li class="list-group-item" value="A">
+							<a>
+							<i class="fa fa-table"></i>
+								Active
+							</a>
+						</li>
+						<li class="list-group-item" value="I">
+							<a>
+							<i class="fa fa-table"></i>
+								Inactive
+							</a>
+						</li>
+						<li class="list-group-item" value="R">
+							<a>
+							<i class="fa fa-table"></i>
+								Rejected
+							</a>
+						</li>
+
+				</ul>
+				
+			</li>
+		</ul>
+	</div>
+</div>

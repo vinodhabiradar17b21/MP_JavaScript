@@ -1,0 +1,44 @@
+<!-- Column Content Fullwidth -->
+<div class="col-xs-12">
+	<div class="x_panel">
+		<div class="x-content">
+			<div class="tile_count" >
+			<div id="trafficStat"></div>
+				<%-- <c:set var="trafGrpColSize"
+					value="${12 / fn:length(dashboardBean.trafGrps)}" />
+				<fmt:formatNumber value="${trafGrpColSize}" type="number"
+					var="trafGrpColSize" />
+				<c:forEach var="trafficGrp" items="${dashboardBean.trafGrps}">
+					<div class="col-xs-${trafGrpColSize}">
+						<div class="tile_stats_count tile_count_line">
+							<c:set var="trafficColSize"
+								value="${12 / fn:length(trafficGrp.traffics)}" />
+							<fmt:formatNumber value="${trafficColSize}" type="number"
+								var="trafficColSize" />
+							Quotations for the week
+							<div>${trafficGrp.caption }</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<c:forEach var="traffic" items="${trafficGrp.traffics}">
+										<div class="${traffic.trafficCssClass } col-xs-${trafficColSize} ">${traffic.trafficCaption}
+											<div class="count">
+												<c:choose>
+													<c:when test="${fn:length(traffic.trafficHrefLink) > 0}">
+														<a href="${traffic.trafficHrefLink }">${traffic.trafficValue }</a>
+													</c:when>
+													<c:otherwise>
+												${traffic.trafficValue }
+											</c:otherwise>
+												</c:choose>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach> --%>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<div class="tab_content">
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="title-sub">
+				<h2>
+					<spring:message code="marketplace.label.acc.trans" />
+					<c:if test="${principal.accnRole == 'SP' || principal.accnRole == 'ADMIN'}">
+						<button type="button" class="btn btn-blue-green02 input-xs"
+							onclick="addRowForTransporter()">
+							<span class="fa fa-plus-circle"></span> Add
+						</button>
+					</c:if>
+				</h2>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="table-responsive">
+				<table class="table table-striped jambo_table bulk_action"
+					id="accnTransporters">
+					<thead>
+						<tr class="headings">
+							<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.trans.id" /></th>
+							<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.trans.name" /></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${accountBean.tMpAccnTransporters }" var="transporter"
+							varStatus="transporterLoop">
+							<c:if test="${disabled eq 'false'}">
+								<tr>
+									<td>
+										<form:input type="hidden"
+													path="tMpAccnTransporters[${transporterLoop.index }].id.matAccnid" 
+													value="${accountBean.tMpAccnTransporters[transporterLoop.index].id.matAccnid}" />
+										<form:input type="hidden"
+													path="tMpAccnTransporters[${transporterLoop.index }].delInd" 
+													value="${accountBean.tMpAccnTransporters[transporterLoop.index].delInd}" 
+													id = "tMpAccnTransportersDelInd_${transporterLoop.index}"/>
+										<form:input type="text"
+													class="form-control input-xs space-input required"
+													placeholder="ID"
+													path="tMpAccnTransporters[${transporterLoop.index }].id.matTransporterId" />
+									</td>
+									<td>
+										<form:input type="text"
+													class="form-control input-xs space-input required"
+													placeholder="ID"
+													path="tMpAccnTransporters[${transporterLoop.index }].matTransporterName" />
+									</td>
+									<td></td>
+								</tr>
+							</c:if>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,65 @@
+<div class="tab_content">
+
+			<div class="row">
+				<!-- Table Condition -->
+				<div class="col-xs-12">
+					<div class="title-sub">
+						<h2><spring:message code="marketplace.label.acc.tnc"/></h2>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<!-- Table Listing -->
+					<div class="table-responsive">
+						<table class="table table-striped jambo_table bulk_action" id="tnctable">
+							<thead>
+								<tr class="headings">
+									<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.tnc.transType"/></th>
+									<th class="column-title col-xs-3"><spring:message code="marketplace.label.acc.tnc.contentsType"/></th>
+									<th class="column-title col-xs-7"><spring:message code="marketplace.label.acc.tnc.contents"/></th>
+									<th class="column-title col-xs-7"><spring:message code="marketplace.label.acc.tnc.action"/></th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="tnc" items="${accountBean.tMpAccnTncs }" varStatus="tncloop"> 
+								<tr>
+								  	<td>	 
+								  		<form:input type="hidden" path="tMpAccnTncs[${tncloop.index}].id.tmatAccnid" value="${accountBean.tMpAccnTncs[tncloop.index].id.tmatAccnid}"/>
+								  		<form:input type="text" readonly="true" class="form-control input-xs space-input" path="tMpAccnTncs[${tncloop.index }].id.tmatTransCd" />
+									</td>
+									<td>
+										<form:select id="tnctype_${tnc.id.tmatAccnid}_${tnc.id.tmatTransCd}" disabled="${disabled}" class="form-control input-xs space-input" path="tMpAccnTncs[${tncloop.index}].tmatTncType" onchange="TNCSetup()" >
+									  		<form:option value="">--select--</form:option>
+									  		<form:option value="F"><spring:message code="marketplace.label.acc.tnc.option.file"/></form:option>
+									  		<form:option value="L"><spring:message code="marketplace.label.acc.tnc.option.link"/></form:option>
+									 	</form:select>  
+					                </td>
+					                <td>
+					                
+					                <c:choose>
+					                  
+									    <c:when test="${not empty accountBean.tMpAccnTncs[tncloop.index].tmatTncDocType}">
+									      <form:input type="file" disabled="${disabled}" id="tncFile${tnc.id.tmatTransCd}" path="tMpAccnTncs[${tncloop.index}].tncFile" class="form-control input-xs space-input"/>
+									    </c:when>    
+									    <c:otherwise>
+									      <form:input type="file" disabled="${disabled}" id="tncFile${tnc.id.tmatTransCd}" path="tMpAccnTncs[${tncloop.index}].tncFile" class="form-control input-xs space-input"/>  
+									    </c:otherwise>
+									</c:choose>					             
+					                 
+						             <form:input type="text" disabled="${disabled}" id="tncLink${tnc.id.tmatTransCd}" path="tMpAccnTncs[${tncloop.index}].tmatTncContent" class="form-control input-xs space-input"/>
+						                 		
+									</td>
+									<td>
+									<c:if test="${not empty accountBean.tMpAccnTncs[tncloop.index].tmatTncDocType}">
+									 <input type="hidden" id ="docType_${tnc.id.tmatAccnid}_${tnc.id.tmatTransCd}" value="${accountBean.tMpAccnTncs[tncloop.index].tmatTncDocType}" />    
+									<c:if test="${disabled == false}">
+									<a href="/COMarketPlace/accnTnc/download?fileId=${accountBean.tMpAccnTncs[tncloop.index].tmatTncId}&fileExt=${accountBean.tMpAccnTncs[tncloop.index].tmatTncDocType}&fileName=${accountBean.tMpAccnTncs[tncloop.index].tmatTncContent}" role="button"><i class="fa fa-download fa-2x"></i></a>
+					              </c:if> </c:if></td>
+									
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>

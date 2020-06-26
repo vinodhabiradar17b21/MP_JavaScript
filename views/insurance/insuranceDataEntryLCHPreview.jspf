@@ -1,0 +1,310 @@
+	<div class="col-xs-12">
+		<div class="modal fade bs-example-modal-lg" id="inspreview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel"><spring:message code="marketplace.label.shipment.insurancelch" /></h4>
+							<div id="insfee" style="display:none" class="row-vcc">
+								<div class="col-xs-vcc-3"><font color="red"><b>Insurance Fee : </b></font></div>
+								<font color="red"><b><div id="insfeeval" class="col-xs-vcc-3"></div></b></font>
+							</div>
+							</div>
+							<div class="modal-body">
+							
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="title-sub">
+										<h2><spring:message code="marketplace.label.shipment.insuranceInfo" /></h2>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.goodsType" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_goodstype" readOnly="true" />
+											
+											<div class="label-input"> Incoterms for Purchase </div>
+											<input type="text" class="form-control input-xs input-disable" id="P_incoterm" readOnly="true" />
+										</div>
+										<div class="col-xs-6">
+											<div class="row-vcc">
+												<div class="col-xs-vcc-12">
+													<div class="label-input"><spring:message code="marketplace.label.shipment.totalsuminsured" /></div>
+												</div>
+
+												<div class="col-xs-vcc-6">
+													<input type="text" class="form-control input-xs input-disable money" id="P_goodsvalue" readOnly="true" />
+												</div>
+
+												<div class="col-xs-vcc-6">
+													<input type="text" class="form-control input-xs input-disable" id="P_goodsccy" readOnly="true" />
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="label-input"> Incoterms for Sales (if applicable) </div>
+											<input type="text" class="form-control input-xs input-disable" id="P_incotermsales" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="label-input"> <spring:message code="marketplace.label.shipment.sumInsuredPercentage" /> </div>
+											<input type="text" class="form-control input-xs input-disable" id="P_insuredpct" readOnly="true" />
+										</div>
+										<div class="col-xs-6">
+											<div class="row-vcc">
+												<div class="col-xs-vcc-12">
+													<div class="label-input"> <spring:message code="marketplace.label.shipment.sumInsured" /> </div>
+												</div>
+												<div class="col-xs-vcc-6">
+													<input type="text" class="form-control input-xs input-disable money" id="P_sumInsured" readOnly="true" />
+												</div>
+												<div class="col-xs-vcc-6">
+													<input type="text" class="form-control input-xs input-disable" id="P_sumInsuredCcy" readOnly="true" />
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="title-sub">
+										<h2><spring:message code="marketplace.label.shipment.insact"/></h2>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="title-sub">
+										<h2>Forwarders (If applicable)</h2>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="row-vcc">
+										<div class="col-xs-vcc-6">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.insact.name"/></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_insactname" readOnly="true" />
+										</div>
+										<div class="col-xs-vcc-6">
+											<div class="label-input">Address</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_insactaddr" readOnly="true" />
+										</div>
+									</div>
+									<div class="row-vcc">
+										<div class="col-xs-vcc-6">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.insact.uen"/></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_insactuen" readOnly="true" />
+										</div>
+										<div class="col-xs-vcc-6">
+											<div class="label-input">Contact</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_insactctc" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="row-vcc">
+										<div class="col-xs-vcc-6">
+											<div class="label-input">Company Name</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_fwdname" readOnly="true" />
+										</div>
+										<div class="col-xs-vcc-6">
+											<div class="label-input">Company Contact</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_fwdctc" readOnly="true" />
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="title-sub">
+										<h2>Voyage</h2>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.transport" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_transport" readOnly="true" />
+										</div>
+										<div class="col-xs-6">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.shipmentDate" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_shipmentDate" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6 P_voyage">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.voyageName" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_voyageName" readOnly="true" />
+										</div>
+										<div class="col-xs-6 P_flight">
+											<div class="label-input"><spring:message code="marketplace.label.shipment.flightNo" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_flightNo" readOnly="true" />
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="title-sub">
+										<h2><spring:message code="marketplace.label.shipment.pickUpGoodsFrom" /></h2>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="title-sub">
+										<h2><spring:message code="marketplace.label.shipment.deliverGoodsTo" /></h2>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<!-- col-left -->
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div id="countryCodeFromDiv" class="label-input"><spring:message code="marketplace.label.shipment.country" />
+												<a href="#countryCodeFrom" role="button" data-toggle="modal"><span class="fa fa-search"></span></a>
+											</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_cntryfrom" readOnly="true" />
+											
+											<div class="label-input"><spring:message code="marketplace.label.shipment.address"/></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_addr1from" readOnly="true" />
+											<input type="text" class="form-control input-xs input-disable" id="P_addr2from" readOnly="true" />
+											<input type="text" class="form-control input-xs input-disable" id="P_addr3from" readOnly="true" />
+										</div>
+
+										<div class="col-xs-6">
+											<div id="portCodeFromDiv" class="label-input"><spring:message code="marketplace.label.shipment.portcode" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_portFrom" readOnly="true" />
+											
+											<div class="label-input"><spring:message code="marketplace.label.shipment.postCode" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_postalfrom" readOnly="true" />
+											
+											<div class="label-input">Place of Origin</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_placeoforigin" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<!-- End col-left -->
+
+								<!-- col-right-->
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div id="countryCodeToDiv" class="label-input"><spring:message code="marketplace.label.shipment.country" />
+												<a href="#countryCodeTo" role="button" data-toggle="modal"><span class="fa fa-search"></span></a>
+											</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_cntryto" readOnly="true" />
+											
+											<div class="label-input">Final Destination Address</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_addr1to" readOnly="true" />
+											<input type="text" class="form-control input-xs input-disable" id="P_addr2to" readOnly="true" />
+											<input type="text" class="form-control input-xs input-disable" id="P_addr3to" readOnly="true" />
+										</div>
+
+										<div class="col-xs-6">
+											<!-- Text Field -->
+											<div id="portCodeToDiv" class="label-input"><spring:message code="marketplace.label.shipment.portcode" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_portto" readOnly="true" />
+											
+											<div class="label-input"><spring:message code="marketplace.label.shipment.postCode" /></div>
+											<input type="text" class="form-control input-xs input-disable" id="P_postalto" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<!-- End col-right -->
+							</div>
+							
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="label-input">Any Transhipment?</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_transhipment" readOnly="true" />
+										</div>
+										<div class="col-xs-6 P_transhipment">
+											<div class="label-input">Transhipment No</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_transitNo" readOnly="true" />
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-6 P_transhipment">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="label-input">Transhipment Details</div>
+											<input type="text" class="form-control input-xs input-disable" id="P_transDtl" readOnly="true" />
+										</div>
+									</div>
+								</div>
+							</div>
+								
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="title-sub">
+										<h2>Goods Details</h2>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+					   			<div class="col-xs-12">
+									<div class="table-responsive">
+										<table class="table table-striped jambo_table bulk_action" id="P_goods">
+											<thead>
+												<tr class="headings">
+													<th class="column-title col-xs-3">Description of Goods</th>
+													<th class="column-title col-xs-2">Conditions of Goods</th>
+													<th class="column-title col-xs-2">Packaging Types</th>
+													<th class="column-title col-xs-1">Quantity</th>
+													<th class="column-title col-xs-4">Additional Information (Size, FCL/LCL etc)</th>
+												</tr>
+											</thead>
+											<tbody>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+
+							<!-- Btn Submit -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="col-search-btn-LAAS">
+										<div class="btn-group input-xs" role="group" aria-label="...">
+											<button type="button" class="btn btn-action-footer" onclick="backToEdit()">
+												<spring:message code="marketplace.label.shipment.action.amend" />
+											</button>
+											<form:button name="action" id="CUS_SUBMIT_QUOT_LCH" value="CUS_SUBMIT_QUOT_LCH" class="btn btn-action-footer">
+												<div class="fa fa-check-square-o"></div>
+												<spring:message code="marketplace.label.shipment.action.submitQuot" />
+											</form:button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End Btn Submit -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

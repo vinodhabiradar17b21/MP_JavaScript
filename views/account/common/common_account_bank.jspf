@@ -1,0 +1,69 @@
+<div class="tab_content">
+
+			<div class="row">
+				<!-- Table Condition -->
+				<div class="col-xs-12">
+					<div class="title-sub">
+						<h2><spring:message code="marketplace.label.acc.banks"/>
+						<c:if test="${disabled eq 'false' }">
+						<button type="button" class="btn btn-blue-green02 input-xs" onclick="addRowForBank()"><span class="fa fa-plus-circle"></span> <spring:message code="marketplace.label.acc.btn.add"/></button>
+						</c:if>
+						</h2>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<!-- Table Listing -->
+					<div class="table-responsive">
+						<table class="table table-striped jambo_table bulk_action" id="banktable">
+							<thead>
+								<tr class="headings">
+									<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.banks.bank"/></th>
+									<th class="column-title col-xs-3"><spring:message code="marketplace.label.acc.banks.branch"/></th>
+									<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.banks.accnno"/></th>
+									<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.banks.ccy"/></th>
+									<th class="column-title col-xs-2"><spring:message code="marketplace.label.acc.banks.amtlmt"/></th>
+									<th class="column-title col-xs-1"><spring:message code="marketplace.label.acc.banks.action"/></th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="bank" items="${accountBean.tCoreAccnBankBeans }" varStatus="bankloop"> 
+								<tr>
+								  	<td>	 
+								  		<form:input type="hidden" path="tCoreAccnBankBeans[${bankloop.index }].tCoreAccnBank.id.abnkAccnid" value="${accountBean.tCoreAccnBankBeans[bankloop.index].tCoreAccnBank.id.abnkAccnid}"/>
+								  		
+								  		<form:select id="bank_${bankloop.index}" class="form-control input-xs space-input" path="tCoreAccnBankBeans[${bankloop.index}].tCoreAccnBank.id.abnkBank">
+								  		<form:option value="">Please select...</form:option>
+								  		<c:forEach var="bankforselect" items="${accountBean.bankList}">
+											<form:option value="${bankforselect.bankId}">${bankforselect.bankDescription}</form:option>
+										</c:forEach>
+								  		</form:select>
+									</td>
+									<td>
+										<form:select id="bankbranch${bankloop.index}" class="form-control input-xs space-input" path="tCoreAccnBankBeans[${bankloop.index}].tCoreAccnBank.id.abnkBankBr"/>
+					                </td>
+					                <td>
+										<form:input type="text" class="form-control input-xs space-input" path="tCoreAccnBankBeans[${bankloop.index}].tCoreAccnBank.id.abnkBankAccn"/>
+									</td>
+									<td>
+					                	<form:select type="text" class="form-control input-xs space-input" path="tCoreAccnBankBeans[${bankloop.index}].tCoreAccnBank.id.abnkCcy">
+					                	<form:option value="">Please select...</form:option>
+								  		<c:forEach var="ccyforselect" items="${accountBean.ccyList}">
+											<form:option value="${ccyforselect.ccyCode}">${ccyforselect.ccyCode}</form:option>
+										</c:forEach>
+					                	</form:select>
+									</td>
+									<td>
+										<form:input type="text" class="form-control input-xs space-input" path="tCoreAccnBankBeans[${bankloop.index}].tCoreAccnBank.id.abnkAmtLimit"/>
+									</td>
+									<td>
+										<a onclick="delBankRow(this)" role="button"><i class="fa fa-trash fa-2x"></i></a>
+										<form:input type="hidden" id="bankDelInd_${bankloop.index}" path="tCoreAccnBankBeans[${bankloop.index }].delInd" value="${accountBean.tCoreAccnBankBeans[bankloop.index].delInd}"/>
+									</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>

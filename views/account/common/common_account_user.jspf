@@ -1,0 +1,83 @@
+<div class="tab_content">
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="title-sub">
+						<h2><spring:message code = "marketplace.label.acc.usr"/>
+						<c:if test="${disabled eq 'false' }">
+						<button type="button" class="btn btn-blue-green02 input-xs" onclick="addRowForAccnUsers()"><span class="fa fa-plus-circle"></span> Add</button>
+						</c:if>
+						</h2>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div class="table-responsive">
+						<table class="table table-striped jambo_table bulk_action" id="accnUsers">
+							<thead>
+								<tr class="headings">
+									<th class="column-title" width="20%"><spring:message code="marketplace.label.acc.usr.name"/></th>
+									<th class="column-title" width="15%"><spring:message code="marketplace.label.acc.usr.id"/></th>
+									<th class="column-title" width="15%"><spring:message code="marketplace.label.acc.usr.pwd"/></th>
+									<th class="column-title" width="10%"><spring:message code="marketplace.label.acc.usr.tel"/></th>
+									<th class="column-title" width="20%"><spring:message code="marketplace.label.acc.usr.email"/></th>
+									<th class="column-title" width="7%"><spring:message code="marketplace.label.acc.usr.avl"/></th>
+									<th class="column-title" width="7%"><spring:message code="marketplace.label.acc.usr.urgent"/></th>
+									<th class="column-title" width="6%"><spring:message code="marketplace.label.acc.usr.action"/></th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach items="${accountBean.userBeans }" var="user" varStatus="usrLoop">
+								<c:if test="${register or disabled eq 'false' or principal.uid eq user.tCoreUsr.usrUid}">
+								<tr>
+									<td>
+										<form:input type="hidden" path="userBeans[${usrLoop.index }].tCoreUsr.usrStatus" value="${accountBean.userBeans[usrLoop.index].tCoreUsr.usrStatus}"/>
+										<c:choose>
+										<c:when test="${register }">
+										<form:input type="text" class="form-control input-xs space-input required" placeholder="User Name" path="userBeans[${usrLoop.index }].tCoreUsr.usrName"/>
+										</c:when>
+										<c:otherwise>
+										<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="User Name" path="userBeans[${usrLoop.index }].tCoreUsr.usrName"/>
+										</c:otherwise>
+										</c:choose>
+									</td>
+									<td>
+										<c:choose>
+										<c:when test="${register}">
+											<form:input type="text" class="form-control input-xs space-input required" placeholder="User Id" path="userBeans[${usrLoop.index}].tCoreUsr.usrUid"/>
+										</c:when>
+										<c:otherwise>
+											<form:input type="text" disabled="true" class="form-control input-xs space-input" placeholder="User Id" path="userBeans[${usrLoop.index}].tCoreUsr.usrUid"/>
+											<form:input type="hidden" path="userBeans[${usrLoop.index}].tCoreUsr.usrUid" value="${accountBean.userBeans[usrLoop.index].tCoreUsr.usrUid}"/>
+										</c:otherwise>
+										</c:choose>
+									</td>
+									<td><form:input type="password" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Password" path="userBeans[${usrLoop.index}].tCoreUsr.usrPwd"/></td>
+									<td><form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" placeholder="Tel" path="userBeans[${usrLoop.index}].tCoreUsr.usrContact.contactTel"/></td>
+									<td><form:input type="text" disabled="${disabled}" class="form-control input-xs space-input required" placeholder="Email" data-parsley-type="email" path="userBeans[${usrLoop.index}].tCoreUsr.usrContact.contactEmail"/></td>
+									<td>
+										
+										<form:select class="form-control input-xs space-input" disabled="${disabled}" path="userBeans[${usrLoop.index}].tMpUsrContactable.tmucContactable">
+								  		<form:option value="Y">Yes</form:option>
+								  		<form:option value="N">No</form:option>
+								 		</form:select>
+									</td>
+									<td>
+										<form:select class="form-control input-xs space-input" disabled="${disabled}" path="userBeans[${usrLoop.index}].tMpUsrContactable.tmucUrgentContact">
+								  		<form:option value="Y">Yes</form:option>
+								  		<form:option value="N">No</form:option>
+								 		</form:select>
+									</td>
+									<td>
+										<a class="editor_remove" role="button"><i class="fa fa-trash fa-2x"></i></a>	
+										<form:input type="hidden" id="tMmstAccnUsrsDelInd_${usrLoop.index}" path="userBeans[${usrLoop.index }].delInd" value="${accountBean.userBeans[usrLoop.index].delInd}"/>																			
+									</td>
+								</tr>
+								</c:if>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			</div>

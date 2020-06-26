@@ -1,0 +1,41 @@
+<!-- Important is the id - they are used to initialise the chart and multiple select element -->
+<div class="col-xs-12">
+	<div class="row">
+		<c:forEach var="graph" items="${dashboardBean.graphs }">
+			<div class="col-xs-6">
+				<div class="x_panel">
+					<div class="x_content">
+						<div class="row">
+<!-- 							Column Content Fullwidth -->
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="x_title">
+													<h2>${graph.graphCaption }</h2>
+													<div class="clearfix"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="chart bar_exp">
+													<div class="dashboardGraphs" id="${graph.graphId }"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</c:forEach>
+	</div>
+</div>
+
+<spring:url var="graph_js"
+	value="/resources/marketplace/js/dashboard.js" />
+<script src="${graph_js}" type="text/javascript"></script>

@@ -1,0 +1,70 @@
+<div class="tab_content">
+
+			<div class="row">
+				<!-- Table Condition -->
+				<div class="col-xs-12">
+					<div class="title-sub">
+						<h2><spring:message code="marketplace.label.acc.spdoc"/>
+						<c:if test="${disabled eq 'false' }">
+						<button type="button" class="btn btn-blue-green02 input-xs" onclick="addRowForSupportingDoc()"><span class="fa fa-plus-circle"></span> <spring:message code="marketplace.label.acc.btn.add"/></button>
+						</c:if>
+						</h2>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<!-- Table Listing -->
+					<div class="table-responsive">
+						<table class="table table-striped jambo_table bulk_action" id="supportDocs">
+							<thead>
+								<tr class="headings">
+									<th class="column-title col-xs-3"><spring:message code="marketplace.label.acc.spdoc.doctype"/></th>
+									<th class="column-title col-xs-3"><spring:message code="marketplace.label.acc.spdoc.att"/></th>
+									<th class="column-title col-xs-5"><spring:message code="marketplace.label.acc.spdoc.rmk"/></th>
+									<th class="column-title col-xs-1"><spring:message code="marketplace.label.acc.spdoc.act"/></th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="supdoc" items="${accountBean.tCoreAccnSuppdocs }" varStatus="loop"> 
+								<tr>
+								  	<td>	 
+								  		<form:input type="hidden" path="tCoreAccnSuppdocs[${loop.index }].asuppId" value="${accountBean.tCoreAccnSuppdocs[loop.index].asuppId}"/>
+										<form:input type="hidden" path="tCoreAccnSuppdocs[${loop.index }].TCoreAccn.accnId" value="${accountBean.tCoreAccnSuppdocs[loop.index].TCoreAccn.accnId}"/>
+										<form:select class="form-control input-xs space-input required" disabled="${disabled}" path="tCoreAccnSuppdocs[${loop.index}].TMmstFileCategory.mmstFilecatCode">
+								  		<c:forEach var="rec" items="${accountBean.fileCatList }">
+											<form:option  value="${rec.mmstFilecatCode}">${rec.mmstFilecatDesc}</form:option>
+										</c:forEach>
+								 		</form:select>
+									</td>
+									<td>
+										<c:choose>
+										<c:when test="${not empty  accountBean.tCoreAccnSuppdocs[loop.index].asuppFileName }">
+										<c:if test="${disabled == false}">
+					                 		<form:input type="hidden" path="tCoreAccnSuppdocs[${loop.index}].asuppFileName" value="${accountBean.tCoreAccnSuppdocs[loop.index].asuppFileName}"/>
+					                 		<form:input type="hidden" path="tCoreAccnSuppdocs[${loop.index}].asuppFileDoctype" value="${accountBean.tCoreAccnSuppdocs[loop.index].asuppFileDoctype}"/>
+					                 		<a target="_blank" href="/COMarketPlace/accnSupDoc/download?fileId=${accountBean.tCoreAccnSuppdocs[loop.index].asuppId}&fileExt=${accountBean.tCoreAccnSuppdocs[loop.index].asuppFileDoctype}&fileName=${accountBean.tCoreAccnSuppdocs[loop.index].asuppFileName}">
+					                 		${accountBean.tCoreAccnSuppdocs[loop.index].asuppFileName }
+					                 		</a>
+					                 		</c:if>
+					                 	</c:when>
+					                 	<c:otherwise>
+					                 		<form:input type="file" path="tCoreAccnSuppdocs[${loop.index}].attFile" class="form-control input-xs space-input required"/>
+					                 	</c:otherwise>
+					                 	</c:choose>
+					                </td>
+					                <td>					               
+					                	<form:input type="text" disabled="${disabled}" class="form-control input-xs space-input" path="tCoreAccnSuppdocs[${loop.index}].asuppDesc"/>
+									</td>
+									<td>
+										<c:if test="${disabled == 'false' }">
+										<%--  <a class="editor_remove" role="button"><i class="fa fa-trash fa-2x"></i></a>--%>
+										<form:input type="hidden" id="tMmstAccnSuppdocsDelInd_${loop.index}" path="tCoreAccnSuppdocs[${loop.index }].delInd" value="${accountBean.tCoreAccnSuppdocs[loop.index].delInd}"/>
+										</c:if>
+									</td>
+								</tr>
+							</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			</div>
